@@ -1,0 +1,16 @@
+.divGridContainer{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+}
+.gridDiv{
+    border: 1px solid #000000;
+    flex:1;
+}
+
+.row{
+    display: flex;
+    flex:1;
+}
