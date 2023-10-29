@@ -18,9 +18,12 @@ function createGrid(numOfDivs){
 
 const slider = document.querySelector(".slider");
 const sliderValue = document.getElementById("sliderValue");
+
+const colorChooser = document.querySelector(".colorChooser");
 createGrid(16);
 color();
 
+// Changes grid size
 slider.addEventListener("click", () => {
     const divGridContainer = document.querySelector(".divGridContainer");
     divGridContainer.remove();
@@ -30,12 +33,13 @@ slider.addEventListener("click", () => {
 });
 
 
+// Allows you to color
 
 function color(){
     const divs = document.querySelectorAll(".gridDiv");
     divs.forEach((gridDiv) => {
     gridDiv.addEventListener("mouseenter", () => {
-        gridDiv.style.backgroundColor = "black";
+        gridDiv.style.backgroundColor = `${colorChooser.value}`;
     } );
 });
 }
