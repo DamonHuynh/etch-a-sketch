@@ -65,17 +65,23 @@ function color(isColor){
     if(isColor){
         const divs = document.querySelectorAll(".gridDiv");
         divs.forEach((gridDiv) => {
-        gridDiv.addEventListener("mouseenter", e => {
-            if (e.buttons == 1){
+            gridDiv.addEventListener("mousedown", () =>{
                 gridDiv.style.backgroundColor = `${colorChooser.value}`;
-            }
+            });
+            gridDiv.addEventListener("mouseenter", e => {
+                if (e.buttons == 1){
+                    gridDiv.style.backgroundColor = `${colorChooser.value}`;
+                }
             
-        } );
+            } );
     });
     }
     else {
         const divs = document.querySelectorAll(".gridDiv");
         divs.forEach((gridDiv) => {
+            gridDiv.addEventListener("mousedown", () =>{
+                gridDiv.style.backgroundColor = `rgb(${Math.random() * 257}, ${Math.random() * 257},${Math.random() * 257})`;
+            });
             gridDiv.addEventListener("mouseenter", e => {
                 if (e.buttons == 1){
                     gridDiv.style.backgroundColor = `rgb(${Math.random() * 257}, ${Math.random() * 257},${Math.random() * 257})`;
