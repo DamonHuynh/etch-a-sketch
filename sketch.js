@@ -1,4 +1,25 @@
 const body = document.querySelector("body");
+const slider = document.querySelector(".slider");
+const sliderValue = document.getElementById("sliderValue");
+const colorChooser = document.querySelector(".colorChooser");
+const colorBtn = document.querySelector("#color");
+const rainbowBtn = document.querySelector("#rainbow");
+const clearBtn = document.querySelector("#clear");
+
+let isColor = true;
+
+colorBtn.addEventListener("click", () => {
+    isColor = true;
+    color(isColor);
+});
+
+rainbowBtn.addEventListener("click", () => {
+    isColor = false;
+    color(isColor);
+});
+
+
+
 
 function createGrid(numOfDivs){
     const divGridContainer = document.createElement("div");
@@ -16,32 +37,38 @@ function createGrid(numOfDivs){
     body.appendChild(divGridContainer);
 }
 
-const slider = document.querySelector(".slider");
-const sliderValue = document.getElementById("sliderValue");
-
-const colorChooser = document.querySelector(".colorChooser");
-createGrid(16);
-color();
-
 // Changes grid size
 slider.addEventListener("click", () => {
     const divGridContainer = document.querySelector(".divGridContainer");
     divGridContainer.remove();
     sliderValue.textContent = `${slider.value} x ${slider.value}`;
     createGrid(Number(slider.value));
-    color();
+    color(isColor);
 });
 
 
 // Allows you to color
+function color(isColor){
+    if(isColor){
+        const divs = document.querySelectorAll(".gridDiv");
+        divs.forEach((gridDiv) => {
+        gridDiv.addEventListener("mouseenter", () => {
+            gridDiv.style.backgroundColor = `${colorChooser.value}`;
+        } );
+    });
+    }
+    else {
+        const divs = document.querySelectorAll(".gridDiv");
+        divs.forEach((gridDiv) => {
+        gridDiv.addEventListener("mouseenter", () => {
+            gridDiv.style.backgroundColor = `rgb(${Math.random() * 257}, ${Math.random() * 257},${Math.random() * 257})`;
+        } );
+    });
+    }
 
-function color(){
-    const divs = document.querySelectorAll(".gridDiv");
-
-    divs.forEach((gridDiv) => {
-    gridDiv.addEventListener("mouseenter", () => {
-        gridDiv.style.backgroundColor = `${colorChooser.value}`;
-    } );
-});
 }
+
+
+createGrid(16);
+color(isColor);
 
