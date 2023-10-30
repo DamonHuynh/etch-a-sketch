@@ -5,8 +5,11 @@ const colorChooser = document.querySelector(".colorChooser");
 const colorBtn = document.querySelector("#color");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
-
 let isColor = true;
+
+createGrid(16);
+color(isColor);
+
 
 colorBtn.addEventListener("click", () => {
     isColor = true;
@@ -18,7 +21,9 @@ rainbowBtn.addEventListener("click", () => {
     color(isColor);
 });
 
-
+clearBtn.addEventListener("click", () => {
+    replaceGrid();
+});
 
 
 function createGrid(numOfDivs){
@@ -38,13 +43,15 @@ function createGrid(numOfDivs){
 }
 
 // Changes grid size
-slider.addEventListener("click", () => {
+slider.addEventListener("click", replaceGrid());
+
+function replaceGrid(){
     const divGridContainer = document.querySelector(".divGridContainer");
     divGridContainer.remove();
     sliderValue.textContent = `${slider.value} x ${slider.value}`;
     createGrid(Number(slider.value));
     color(isColor);
-});
+}
 
 
 // Allows you to color
@@ -69,6 +76,5 @@ function color(isColor){
 }
 
 
-createGrid(16);
-color(isColor);
+
 
