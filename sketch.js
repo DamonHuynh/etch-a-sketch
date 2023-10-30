@@ -1,4 +1,4 @@
-const body = document.querySelector("body");
+const canvas = document.querySelector(".canvas");
 const slider = document.querySelector(".slider");
 const sliderValue = document.getElementById("sliderValue");
 const colorChooser = document.querySelector(".colorChooser");
@@ -25,6 +25,11 @@ clearBtn.addEventListener("click", () => {
     replaceGrid();
 });
 
+// Changes grid size
+slider.addEventListener("click", () =>{
+    replaceGrid();
+});
+
 
 function createGrid(numOfDivs){
     const divGridContainer = document.createElement("div");
@@ -39,11 +44,10 @@ function createGrid(numOfDivs){
         }
         divGridContainer.appendChild(row);
     }
-    body.appendChild(divGridContainer);
+    canvas.appendChild(divGridContainer);
 }
 
-// Changes grid size
-slider.addEventListener("click", replaceGrid());
+
 
 function replaceGrid(){
     const divGridContainer = document.querySelector(".divGridContainer");
