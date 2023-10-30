@@ -60,11 +60,16 @@ function replaceGrid(){
 
 // Allows you to color
 function color(isColor){
+    let isClicked = false;
+    
     if(isColor){
         const divs = document.querySelectorAll(".gridDiv");
         divs.forEach((gridDiv) => {
         gridDiv.addEventListener("mouseenter", () => {
-            gridDiv.style.backgroundColor = `${colorChooser.value}`;
+            gridDiv.addEventListener("mousedown", () => isClicked = true);
+            if(isClicked){
+                gridDiv.style.backgroundColor = `${colorChooser.value}`;
+            }
         } );
     });
     }
@@ -72,7 +77,10 @@ function color(isColor){
         const divs = document.querySelectorAll(".gridDiv");
         divs.forEach((gridDiv) => {
         gridDiv.addEventListener("mouseenter", () => {
-            gridDiv.style.backgroundColor = `rgb(${Math.random() * 257}, ${Math.random() * 257},${Math.random() * 257})`;
+            gridDiv.addEventListener("mousedown", () => isClicked = true);
+            if(isClicked){
+                gridDiv.style.backgroundColor = `rgb(${Math.random() * 257}, ${Math.random() * 257},${Math.random() * 257})`;
+            }
         } );
     });
     }
