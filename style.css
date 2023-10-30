@@ -14,3 +14,13 @@
     flex:1;
 }
 
+.colorChooser{
+    width: 100px;
+    height: 100px; 
+    padding: 10px;
+    border: none;
+    border-radius: 200px;
+    background-color: white;
+    overflow: hidden ;
+   
+}

@@ -37,6 +37,7 @@ slider.addEventListener("click", () => {
 
 function color(){
     const divs = document.querySelectorAll(".gridDiv");
+
     divs.forEach((gridDiv) => {
     gridDiv.addEventListener("mouseenter", () => {
         gridDiv.style.backgroundColor = `${colorChooser.value}`;
